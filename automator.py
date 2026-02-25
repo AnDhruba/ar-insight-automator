@@ -3,7 +3,7 @@ import pdfplumber
 import pandas as pd
 import io
 
-# --- UI SETUP & CUSTOM CSS ---
+#1
 st.set_page_config(page_title="AR Insight Automator", layout="wide")
 
 st.markdown("""
@@ -55,15 +55,14 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+#2
 
-# --- HEADER SECTION ---
 st.markdown("<h1 class='main-title'>📄 AR Insight Automator</h1>", unsafe_allow_html=True)
 st.markdown("<div class='author-link'>Project by <a href='https://www.linkedin.com/in/dhrubajyoti-rajak-3649a6195/' target='_blank'>Dhrubajyoti Rajak</a></div>", unsafe_allow_html=True)
 st.markdown("<p class='sub-title'>Upload an NSE/BSE Annual Report (PDF). This tool semantic-scans the document to extract hidden risks and critical financial paragraphs.</p>", unsafe_allow_html=True)
 
 st.markdown("---")
 
-# --- THE SEMANTIC DICTIONARY ---
 default_categories = {
     "Auditor Red Flags": ["key audit matters", "emphasis of matter", "qualified opinion", "adverse opinion", "auditor's qualifications"],
     "Hidden Risks (Contingent)": ["contingent liabilities", "claims against the company", "off-balance sheet", "guarantees provided"],
@@ -74,8 +73,7 @@ default_categories = {
     "Future Capex & Outlook": ["capital work in progress", "future outlook", "capital expenditure plans"]
 }
 
-# --- TWO-COLUMN LAYOUT ---
-# This creates a left and right block for a cleaner, wider dashboard feel
+#3
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
@@ -99,7 +97,7 @@ with col1:
         height=100
     )
 
-    # Merge custom inputs
+    #4
     if user_custom_input.strip():
         custom_keywords = [kw.strip().lower() for kw in user_custom_input.split(',')]
         default_categories["Custom User Search"] = custom_keywords
@@ -110,12 +108,11 @@ with col2:
 
 st.markdown("---")
 
-# --- EXTRACTION ENGINE (Centered below the columns) ---
-# We wrap this in a container so it stays neatly formatted
+#4
 with st.container():
     if uploaded_file is not None:
         
-        # Center the button using columns
+        #4a
         _, center_btn, _ = st.columns([1, 1, 1])
         
         with center_btn:
@@ -155,7 +152,7 @@ with st.container():
 
             my_bar.empty() 
             
-            # --- OUTPUT AND DOWNLOAD ---
+            #5
             if extracted_data:
                 st.success(f"✅ Extraction Complete! Found {len(extracted_data)} critical insights.")
                 df = pd.DataFrame(extracted_data)
