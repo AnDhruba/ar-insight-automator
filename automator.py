@@ -3,7 +3,7 @@ import pdfplumber
 import pandas as pd
 import io
 
-# --- UI SETUP & CUSTOM CSS ---
+#1
 st.set_page_config(page_title="AR Insight Automator", layout="wide")
 
 st.markdown("""
@@ -56,14 +56,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- HEADER SECTION ---
+#2
 st.markdown("<h1 class='main-title'>📄 AR Insight Automator</h1>", unsafe_allow_html=True)
 st.markdown("<div class='author-link'>Project by <a href='https://www.linkedin.com/in/dhrubajyoti-rajak-3649a6195/' target='_blank'>Dhrubajyoti Rajak</a></div>", unsafe_allow_html=True)
 st.markdown("<p class='sub-title'>Upload an NSE/BSE Annual Report (PDF). This tool semantic-scans the document to extract hidden risks and critical financial paragraphs.</p>", unsafe_allow_html=True)
 
 st.markdown("---")
 
-# --- THE SEMANTIC DICTIONARY ---
+#3
 default_categories = {
     "Auditor Red Flags": ["key audit matters", "emphasis of matter", "qualified opinion", "adverse opinion", "auditor's qualifications"],
     "Hidden Risks (Contingent)": ["contingent liabilities", "claims against the company", "off-balance sheet", "guarantees provided"],
@@ -74,7 +74,7 @@ default_categories = {
     "Future Capex & Outlook": ["capital work in progress", "future outlook", "capital expenditure plans"]
 }
 
-# --- TWO-COLUMN LAYOUT ---
+#4
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
@@ -108,7 +108,7 @@ with col2:
 
 st.markdown("---")
 
-# --- EXTRACTION ENGINE ---
+#5
 with st.container():
     if uploaded_file is not None:
         
